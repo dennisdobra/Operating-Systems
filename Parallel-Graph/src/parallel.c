@@ -17,10 +17,10 @@ static int sum;
 static os_graph_t *graph;
 static os_threadpool_t *tp;
 
-/* TODO: Define graph synchronization mechanisms. */
+/* Define graph synchronization mechanisms. */
 pthread_mutex_t global_mutex;
 
-/* TODO: Define graph task argument. */
+/* Define graph task argument. */
 static void process_node(unsigned int idx);
 
 void action(void *arg)
@@ -30,7 +30,7 @@ void action(void *arg)
 
 static void process_node(unsigned int idx)
 {
-	/* TODO: Implement thread-pool based processing of graph. */
+	/* Implement thread-pool based processing of graph. */
 	os_node_t *node;
 
 	pthread_mutex_lock(&global_mutex);
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 
 	graph = create_graph_from_file(input_file);
 
-	/* TODO: Initialize graph synchronization mechanisms. */
+	/* Initialize graph synchronization mechanisms. */
 	pthread_mutex_init(&global_mutex, NULL);
 	tp = create_threadpool(NUM_THREADS);
 	process_node(0);

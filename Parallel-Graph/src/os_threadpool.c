@@ -34,12 +34,12 @@ void destroy_task(os_task_t *t)
 }
 
 /* Put a new task to threadpool task queue. */
-void enqueue_task(os_threadpool_t *tp, os_task_t *t)	// e buna functia asta
+void enqueue_task(os_threadpool_t *tp, os_task_t *t)
 {
 	assert(tp != NULL);
 	assert(t != NULL);
 
-	/* TODO: Enqueue task to the shared task queue. Use synchronization. */
+	/* Enqueue task to the shared task queue. Use synchronization. */
 
 	pthread_mutex_lock(&(tp->mutex));
 
@@ -144,7 +144,7 @@ os_threadpool_t *create_threadpool(unsigned int num_threads)
 
 	list_init(&tp->head);
 
-	/* TODO: Initialize synchronization data. */
+	/* Initialize synchronization data. */
 	pthread_mutex_init(&(tp->mutex), NULL);
 	pthread_cond_init(&(tp->task_available), NULL);
 	sem_init(&tp->sem, 0, 0);
@@ -168,7 +168,7 @@ void destroy_threadpool(os_threadpool_t *tp)
 {
 	os_list_node_t *n, *p;
 
-	/* TODO: Signal threads to exit and wait for them to finish. */
+	/* Signal threads to exit and wait for them to finish. */
 	for (unsigned int i = 0; i < tp->num_threads; ++i)
 		pthread_join(tp->threads[i], NULL);
 

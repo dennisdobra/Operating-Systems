@@ -19,18 +19,18 @@ typedef struct os_threadpool {
 
 	/*
 	 * Head of queue used to store tasks.
-	 * First item is head.next, if head.next != head (i.e. if queue
+	 * The first item is head.next if head.next != head (i.e., if the queue
 	 * is not empty).
-	 * Last item is head.prev, if head.prev != head (i.e. if queue
+	 * The last item is head.prev if head.prev != head (i.e., if the queue
 	 * is not empty).
 	 */
 	os_list_node_t head;
 
-	/* TODO: Define threapool / queue synchronization data. */
-	pthread_mutex_t mutex;   		// Mutex pentru sincronizarea threadpool-ului
-	int active_tasks;				// Nr de task-uri care se executa
-	pthread_cond_t task_available; 	// Variabilă pentru semnalizarea disponibilității de task-uri
-	sem_t sem;						// Semmafor pentru start ul programului
+	/* TODO: Define thread pool / queue synchronization data. */
+	pthread_mutex_t mutex;   		// Mutex for synchronizing the thread pool
+	int active_tasks;				// Number of tasks currently being executed
+	pthread_cond_t task_available; 	// Variable for signaling the availability of tasks
+	sem_t sem;						// Semaphore for starting the program
 } os_threadpool_t;
 
 os_task_t *create_task(void (*f)(void *), void *arg, void (*destroy_arg)(void *));
