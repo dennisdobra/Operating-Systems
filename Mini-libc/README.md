@@ -27,3 +27,9 @@ Error Handling (<errno.h>):
 
  - Linux system with x86_64 architecture (for development and testing).
  - Alternatively, use an x86_64 virtual machine on ARM64 or Aarch64 systems (such as macOS).
+
+# Project Structure
+
+ - src/: The main source code for mini-libc. This includes the core functions and system call wrappers.
+ - samples/: Sample applications and use cases that demonstrate the functionality of mini-libc.
+ - tests/: A comprehensive set of tests to validate the correctness of mini-libc, including both functional and performance testing.
